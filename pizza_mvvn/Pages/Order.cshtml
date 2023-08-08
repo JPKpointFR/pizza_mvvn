@@ -1,0 +1,55 @@
+﻿@page
+@model pizza_mvvn.Pages.Order.OrderModel
+
+@{
+    ViewData["Title"] = "Order";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <h1>Order detail</h1>
+
+
+    <div class="order_list">
+        
+        @if((Model.pizzasCount != 0))
+        {
+            @foreach (var p in Model.pizzasList)
+            {
+
+                <p>@p.nom</p>
+
+            }
+        }
+        <br /><hr />
+            <form method="post" action="@Url.Action("MailSender", "Order")">
+            <div class="mx-auto" style="width: 400px;">
+                <h2>Validation de votre commande</h2>
+                    <div class="">
+                        <input class="form-control" type="text" name="name" placeholder="name"/>
+                    <div/>
+                    <div class="">
+                        <input class="form-control" type="email" name="mailAdresse" placeholder="email" />
+                     <div />
+                        <br />
+                        <button class="btn btn-warning" type="submit">CONFIRMER</button>
+                </div>
+                
+            </form>
+            <br />            
+
+
+        <a asp-page="/Index">Retour A l'acceuil</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+

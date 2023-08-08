@@ -1,0 +1,29 @@
+﻿@page
+@model pizza_mvvn.Pages.Admin.IndexModel
+@{
+}
+
+<h1>Login</h1>
+
+@if (Model.IsDevelopmentMode)
+{
+    <p>MODE DEVELOPPEMENT</p>
+}
+
+
+@if (Model.authenticated==false)
+{
+    <div class="alert alert-danger" role="alert">ERROR: Invalid Username Or Password</div>
+}
+
+
+<br />
+<form method="post">
+    <input type="text" name="username" placeholder="Username" />
+    <br />
+    <input type="password" name="password" placeholder="Password" />
+    <br />
+    <button>Login</button>
+</form>
+
+

@@ -1,0 +1,62 @@
+﻿@page
+@model IndexModel 
+
+
+@{
+    ViewData["Title"] = "Menu";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+    </head>
+    <body>
+
+        <img src="~/images/small_logo.png" id="logo"/>
+
+        <div class="title">
+                <h1 class="display-4">Les Pizzas</h1>
+        </div>
+
+    @if (Model.orderLenght != 0)
+    {
+        <a class="h1" asp-page="/Order">COMMANDER</a>
+    }
+
+    
+    
+        <div class="menu_list">
+
+            
+            @foreach(var pizza in Model.Pizza)
+            {
+                <div class="menu_list_item">
+
+                <span class="menu_list_title">@pizza.nom<span/> 
+                <span class="menu_list_price">@String.Format("{0:0.00}", pizza.prix)€<span />
+                <span class="menu_list_ingredients">@pizza.ingredients<span/>    
+                            @if (pizza.vegetarienne)
+                            {
+                                <span class="menu_list_badge">Végétarienne</span>
+
+                            }
+                            <form method="post" action="@Url.Action("AddPizza", "Pizza")">
+                                <input type="hidden" name="id" value="@pizza.PizzaId" />
+                                <button type="submit">AJOUTER</button>
+                            </form>
+
+                </div>
+            }
+           
+
+        </div>
+
+    </body>
+</html>
+
+
+
+
+
